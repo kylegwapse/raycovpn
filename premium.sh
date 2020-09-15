@@ -9,7 +9,7 @@ yum install vixie-cron crontabs httpd git zip unzip epel-release -y
 yum install php php-pdo php-mysqli php-mysql php-gd php-mbstring.x86_64 -y
 yum install php-gd php-ldap php-odbc php-pear php-xml php-xmlrpc php-mbstring php-snmp php-soap curl curl-devel -y
 rm /etc/sysctl.conf
-wget -O /etc/openvpn.zip "https://raw.githubusercontent.com/kylegwapse/regina/master/premium.zip"
+wget -O /etc/openvpn.zip "https://raw.githubusercontent.com/kylegwapse/raycovpn/master/premium.zip"
 cd /etc/
 unzip openvpn.zip
 cd
@@ -95,10 +95,10 @@ service openvpn restart
 service squid start
 crontab -r
 mkdir /usr/sbin/kpn
-wget -O /usr/sbin/kpn/connection.php "https://raw.githubusercontent.com/kylegwapse/regina/master/premiumconnection.sh"
-echo "*/3 * * * * /usr/bin/php /usr/sbin/kpn/connection.php >/dev/null 2>&1
-*/3 * * * * /bin/bash /usr/sbin/kpn/active.sh >/dev/null 2>&1
-*/3 * * * * /bin/bash /usr/sbin/kpn/inactive.sh >/dev/null 2>&1" | tee -a /var/spool/cron/root
+wget -O /usr/sbin/kpn/connection.php "https://raw.githubusercontent.com/kylegwapse/raycovpn/master/premiumconnection.sh"
+echo "*/1 * * * * /usr/bin/php /usr/sbin/kpn/connection.php >/dev/null 2>&1
+*/1 * * * * /bin/bash /usr/sbin/kpn/active.sh >/dev/null 2>&1
+*/1 * * * * /bin/bash /usr/sbin/kpn/inactive.sh >/dev/null 2>&1" | tee -a /var/spool/cron/root
 /sbin/chkconfig crond on
 /sbin/service crond start
 /etc/init.d/crond start
@@ -106,4 +106,4 @@ service crond restart
 echo ''
 rm prembeta.sh &> /dev/null
 echo 'Installation Complete'
-echo 'Setup Done by Kenjie'
+echo 'Setup Done by Kashi'
